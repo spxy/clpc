@@ -1,19 +1,23 @@
 Common Lisp Programming Challenge
 =================================
 
-This repository is part of the Common Lisp Programming Challenge
-announced at [spxy.org/cc/clpc/](https://spxy.org/cc/clpc/).
+Learn Common Lisp (CL) together with a community of other learners and
+experts.
 
-This repository provides some common exercises and code examples that
+If you are a beginner to CL, this challenge will help you to get started
+with setting up a development environment from scratch and begin the
+journey of learning CL together with other community members. If you are
+an expert at CL, you are welcome to hang out with us in our
+[forums](#forums) and help others with their questions.
+
+This repository provides some setup exercises and code examples that
 participants of this challenge can work through for every week of the
 challenge.
 
 Each week's exercise is composed of 5 units. Each unit is intended
-to take roughly 1 hour of work. If a unit takes significantly more
-than an hour (say, 2 hours or more), please [create an issue][ISSUES]
-and let us know. Therefore each week may involve about 5 hours of work.
-Hopefully, this allow people with busy schedules to also participate in this
-challenge.
+to take roughly 1 hour of work. Therefore each week may involve about 5
+hours of work. Hopefully, this will allow people with busy schedules to
+participate in this challenge too.
 
 The content of this repository is available under the [CC BY 4.0][CCBY]
 license.
@@ -23,27 +27,43 @@ Contents
 --------
 
 * [Week 1](#week-1)
-  * [Unit 1.1: SBCL](#unit-1.1-sbcl)
-  * [Unit 1.2: Emacs](#unit-1.2-emacs)
-  * [Unit 1.3: SLIME](#unit-1.3-slime) (Coming up!)
+  * [Unit 1: SBCL](#unit-1-sbcl)
+  * [Unit 2: Emacs](#unit-2-emacs)
+  * [Unit 3: SLIME](#unit-3-slime) (Coming up!)
 
 
 Week 1
 ------
 
-## Unit 1.1: SBCL
+## Unit 1: SBCL
 
 > "Lisp is worth learning for the profound enlightenment experience you
 > will have when you finally get it. That experience will make you a
 > better programmer for the rest of your days, even if you never
 > actually use Lisp itself a lot." -- Eric S. Raymond
 
-This unit shows how to quickly setup SBCL on your system. There are
-many Common Lisp implementations to choose from. Take a look at
+This unit shows how to quickly setup SBCL on your system. First, a few
+basics:
+
+ 1. Lisp is not a single programming language. It is a family of
+    programming languages with a distinctive fully parenthesized prefix
+    notation. Some popular dialects of Lisp are Common Lisp, Scheme,
+    Clojure, Emacs Lisp, Racket, etc.
+
+ 2. Common Lisp is a dialect of Lisp with an ANSI standard. There are
+    many implementations of Common Lisp in the form of compilers as well
+    as interpreters. Some examples are Steel Bank Common Lisp (SBCL),
+    Clozure CL (CCL), CLISP, etc. Clozure CL should not be confused with
+    Clojure. Clozure CL is a compiler implementation for Common Lisp
+    whereas Clojure is a separate dialect Lisp meant for the Java
+    platform.
+
+In this document, we work with Common Lisp only. Take a look at
 https://common-lisp.net/implementations for a list of some of the
 popular ones. We choose SBCL for this unit because it is the most
 popular free and open source implementation of Common Lisp. It is also
-known for its good performance.
+known for its good performance. Perform the following steps to get
+started with SBCL:
 
  1. Install SBCL.
 
@@ -103,7 +123,7 @@ In the next few units, we will see how to set up an interactive
 programming environment with Emacs and SLIME.
 
 
-## Unit 1.2: Emacs
+## Unit 2: Emacs
 
 > "Calling EMACS an editor is like calling the Earth a hunk of dirt." --
 > Chris DiBona
@@ -117,7 +137,7 @@ see how to set up GNU Emacs.
 This unit is useful for those who have little to no Emacs experience.
 If you are an experienced Emacs user, please proofread this unit and
 if you find any issues, [create issues][ISSUES] or send us pull
-requests.
+requests. Perform the following steps to get started with Emacs:
 
  1. See https://www.gnu.org/software/emacs/download.html for Emacs
     download information. Here are some common commands:
@@ -152,33 +172,48 @@ requests.
     To resolve this issue, go to Apple menu > System Preferences >
     Security & Privacy > General and click `Open Anyway`.
 
- 3. Within Emacs, enter the following command to create a file, say,
+ 3. Within Emacs, enter the following command to open file, say,
     `~/hello.txt`:
 
     ```
-    C-x C-f ~/hello.txt
+    C-x C-f ~/hello.txt RET
     ```
 
-    This creates a buffer for the new file. Type some text into the
-    buffer. Type out at least 3-4 words. We will need it for the next
-    two steps.
+    A new buffer to edit `~/hello.txt` is created. If a file with that
+    name exists on your file system, then it loads the content of the
+    file into the buffer.
 
-    Note in the Emacs world (and elsewhere too), we use the notation
-    `C-` to denote we should press the <kbd>ctrl</kbd> and hold it while
-    pressing the next key. For example, what is often denoted as
-    <kbd>ctrl</kbd> + <kbd>x</kbd> is denoted as `C-x` here.
+    Note that in the Emacs world (and elsewhere too), we use the
+    notation `C-` to denote we should press the <kbd>ctrl</kbd> and hold
+    it while pressing the next key. For example, what is often denoted
+    as <kbd>ctrl</kbd> + <kbd>x</kbd> is denoted as `C-x` here.
 
- 4. Move backward by one word with the following command:
+    Similarly, `RET` denotes the <kbd>enter</kbd>/<kbd>return</kbd> key.
+
+    Another important thing to note is that when a command has two
+    consecutive `C-` key sequences, you don't really have to press and
+    hold the <kbd>ctrl</kbd> key twice. Instead, you can press and hold
+    <kbd>ctrl</kbd> key once at the beginning, then press the two other
+    keys, and then release the <kbd>ctrl</kbd> key. This shortcut is
+    more convenient to work with. For example, for `C-x C-f`, you can
+    press and hold <kbd>ctrl</kbd>, then press <kbd>x</kbd>, then press
+    <kbd>f</kbd>, and then release <kbd>ctrl</kbd>. In other words,
+    think of `C-x C-f` as `C-(x f)`.
+
+ 4. Now type some text into the buffer. Type out at least 3-4 words. We
+    will need it for the next two steps.
+
+ 5. Move backward by one word with the following command:
 
     ```
     M-b
     ```
 
     The notation `M-` denotes pressing and holding the meta key. What's
-    a meta key? It is usually the <kbd>option</kbd>/<kbd>alt</kbd>. The
-    <kbd>esc</kbd> key also works as the meta key but most people use
-    the <kbd>alt</kbd> or <kbd>option</kbd> key as the meta key. In
-    case, you are having trouble with getting the
+    a meta key? It is usually the <kbd>option</kbd>/<kbd>alt</kbd> key
+    on the keyboard. The <kbd>esc</kbd> key also works as the meta key
+    but most people use the <kbd>alt</kbd> or <kbd>option</kbd> key as
+    the meta key. In case, you are having trouble with getting the
     <kbd>alt</kbd>/<kbd>option</kbd> key working with Emacs, read [this
     article](https://www.emacswiki.org/emacs/MetaKeyProblems).
 
@@ -188,22 +223,35 @@ requests.
     M-f
     ```
 
- 4. Then type some text in it and save the file:
+ 6. The `C-g` key sequence cancels the current command. This can be used
+    when you mistype a command and want to start over or if you type a
+    command partially, then change your mind and then you want to cancel
+    the partially typed command. Try out these examples:
+
+    ```
+    C-x C-f C-g
+    ```
+
+    ```
+    C-x C-g
+    ```
+
+ 7. Save the buffer to a file on the file system with this command:
 
     ```
     C-x C-s
     ```
 
- 5. Quit Emacs:
+ 8. Quit Emacs:
 
     ```
     C-x C-c
     ```
 
-Now you know how to start Emacs, create a file, save it, and quit.
-Improve your Emacs knowledge further by taking the Emacs tutorial that
-comes along with Emacs. First, start Emacs again and then enter the
-following command to start the tutorial:
+Now you know how to start Emacs, open a file, save it, and quit. Improve
+your Emacs knowledge further by taking the Emacs tutorial that comes
+along with Emacs. First, start Emacs again and then enter the following
+command to start the tutorial:
 
 ```
 C-h t
@@ -224,8 +272,135 @@ can be quite helpful. The menu options contain frequently used
 operations. The option for each operation also displays the key-bindings
 that can be used to invoke the same operation.
 
+Let us now see how to customize Emacs with an initialization file.
+Perform the following steps:
 
-## Unit 1.3: SLIME
+ 1. Run Emacs again with the following command in the shell:
+
+    ```sh
+    emacs
+    ```
+
+ 2. In Emacs, enter this command to create a new file at
+    `~/emacs.d/init.el`:
+
+    ```
+    C-x C-f ~/emacs.d/init.el RET
+    ```
+
+ 3. Then add the following lines of Emacs Lisp code:
+
+    ```elisp
+    (load-theme 'wombat)
+    (menu-bar-mode -1)
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1)
+    (setq inhibit-startup-screen t)
+    ```
+
+    The first line tells Emacs to load a beautiful dark color built-in
+    theme known as `wombat`. If you want to check the other built-in
+    themes, enter `M-x load-theme` and then press <kbd>tab</kbd> to see
+    the available built-in themes.
+
+    The next three lines remove the menu bar, tool bar, and the scroll
+    bar from Emacs running in GUI mode. This makes the window look
+    minimal.
+
+    The last line inhibits the startup screen with the `Welcome to GNU
+    Emacs` message.
+
+    As a beginner to Emacs, you might want to only load a theme in your
+    `~/emacs.d/init.el`. Don't disable the menu bar, tool bar, and
+    scroll bar if you are not comfortable yet. Similarly, the startup
+    screen useful information for beginners, so you might want to gain
+    more experience with Emacs before disabling it.
+
+ 4. Quit Emacs now:
+
+    ```
+    C-x C-c
+    ```
+
+ 5. Start Emacs again:
+
+    ```sh
+    emacs
+    ```
+
+    Emacs should now load with the theme and customization set in your
+    `~/emacs.d/init.el`.
+
+    Emacs supports a number of initialization files such as `~/.emacs`,
+    `~/.emacs.el`, `~/.emacs.d/init.el`, etc. Traditionally, Emacs users
+    kept their initialization program in `~/.emacs`. However, it may be
+    more convenient to have all your Emacs in one directory, i.e.,
+    `~/.emacs.d`, so this section recommends keeping your initialization
+    program in `~/.emacs.d/init.el`.
+
+Before we end this unit, let us take a quick look on how to access the
+built-in help. Emacs has a rich built-in help and beginners as well as
+experienced users rely heavily on the built-in help. Here are some steps
+to get started with the help system:
+
+ 1. Enter the following command to get help on how to use the help
+    features:
+
+    ```
+    C-h C-h RET
+    ```
+
+ 2. Enter the following command to search for commands whose name match
+    the given `PATTERN`:
+
+    ```
+    C-h a PATTERN RET
+    ```
+
+    Note that `PATTERN` here is a placeholder for the actual pattern you
+    want to search. Here is a concrete example that searches for
+    commands with `buffer` in their names:
+
+    ```
+    C-h a buffer RET
+    ```
+
+ 3. Enter the following command to get help for a key sequence:
+
+    ```
+    C-h k KEY-SEQUENCE
+    ```
+
+    Note that `KEY-SEQUENCE` here is a placeholder for the actual key
+    sequence. Here are a few concrete examples:
+
+    ```
+    C-h k C-x C-f
+    ```
+
+    ```
+    C-h k C-g
+    ```
+
+ 4. Enter the following command to get help for a specific symbol.
+
+    ```
+    C-h o SYMBOL RET
+    ```
+
+    Note that `SYMBOL` here is a placeholder for the actual symbol. Here
+    are a few concrete examples:
+
+    ```
+    C-h o load-theme RET
+    ```
+
+    ```
+    C-h o menu-bar-mode RET
+    ```
+
+
+## Unit 3: SLIME
 
 Coming up!
 
