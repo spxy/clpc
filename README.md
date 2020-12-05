@@ -34,10 +34,11 @@ Contents
     * [Unit 2.1: Install Emacs](#unit-21-install-emacs)
     * [Unit 2.2: Emacs Init File](#unit-22-emacs-init-file)
     * [Unit 2.3: Emacs Help](#unit-23-emacs-help)
+    * [Unit 2.4: More Emacs Commands](#unit-24-more-emacs-commands)
   * [Unit 3: SLIME](#unit-3-slime)
-    * [Unit 3.1: Install SLIME Using MELPA](#unit-21-install-slime-using-melpa)
-    * [Unit 3.2: Install SLIME Using Git](#unit-21-install-slime-using-git)
-    * [Unit 3.3: Use SLIME](#use-slime)
+    * [Unit 3.1: Install SLIME Using MELPA](#unit-31-install-slime-using-melpa)
+    * [Unit 3.2: Install SLIME Using Git](#unit-31-install-slime-using-git)
+    * [Unit 3.3: Use SLIME](#unit-33-use-slime)
 
 
 Week 1
@@ -195,7 +196,7 @@ requests. Perform the following steps to get started with Emacs:
     `~/hello.txt`:
 
     ```
-    C-x C-f ~/hello.txt RET
+    C-x C-f hello.txt RET
     ```
 
     A new buffer to edit `~/hello.txt` is created. If a file with that
@@ -424,6 +425,26 @@ started with the help system:
     ```
 
 
+### Unit 2.4: More Emacs Commands
+
+Here is a list of frequently used commands you may need in Emacs:
+
+  - `C-x C-f FILENAME  RET`: Edit file `FILENAME`.
+  - `C-g`: Signal quit condition. Also, cancel partial command.
+  - `C-x C-s`: Save current buffer to file if modified.
+  - `C-x C-c`: Quit Emacs.
+  - `C-x C-b`: Show a list of exiting buffers.
+  - `C-x b BUFFER RET`: Switch to a different buffer.
+  - `C-x o`: Select next window.
+  - `C-x k`: Kill buffer.
+  - `C-x 4 0`: Kill buffer and window.
+  - `C-h C-h`: Help for help.
+  - `C-h a PATTERN RET`: Show commands that match pattern.
+  - `C-h k KEY-SEQUENCE`: Show help for `KEY-SEQUENCE`.
+  - `C-h o SYMBOL RET`: Show help for `SYMBOL`.
+  - `C-/` or `C-_` or `C-x u`: Undo.
+
+
 ## Unit 3: SLIME
 
 SLIME stands for Superior Lisp Interaction Mode for Emacs. It is an
@@ -621,6 +642,30 @@ Here are the steps to install SLIME from its Git repository:
     hello, world
     NIL
     ```
+
+ 3. We will now see how to work on a Lisp source file and send
+    expressions to the REPL for evaluation using SLIME commands without
+    having to leave Emacs. First, create a buffer for a new file, for
+    example:
+
+    ```
+    C-x C-f foo.lisp
+    ```
+
+ 4. Now enter this Lisp code into the buffer for `foo.lisp`:
+
+    ```lisp
+    (+ 1 2)
+    ```
+
+ 5. While the cursor is placed after the closing parenthesis (not on it,
+    but after it), enter the following command:
+
+    ```
+    C-x C-e
+    ```
+
+    The result `3` should appear in a minibuffer at the bottom.
 
 
 License
