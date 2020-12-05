@@ -39,6 +39,8 @@ Contents
     * [Unit 3.1: Install SLIME Using MELPA](#unit-31-install-slime-using-melpa)
     * [Unit 3.2: Install SLIME Using Git](#unit-31-install-slime-using-git)
     * [Unit 3.3: Use SLIME](#unit-33-use-slime)
+* [Forums](#forums)
+* [License](#license)
 
 
 Week 1
@@ -122,19 +124,13 @@ Perform the following steps to get started with SBCL:
     will return to this book after going through a couple of more
     units to set up the development environment.
 
- 5. Also, join us at our community forums, share your progress, as well
+ 5. Also, join us at our [forums](#forums), share your progress, as well
     as help and encourage others who are also participating in this
-    programming challenge. Here are our community forum details:
-
-      - Reddit: [r/spxy](https://www.reddit.com/r/spxy/)
-      - Matrix: [#spxy:matrix.org](https://app.element.io/#/room/#spxy:matrix.org)
-      - Freenode: [#spxy](https://webchat.freenode.net/#spxy)
-      - Twitter: [@spxycc](https://twitter.com/spxycc)
-      - Mailing list: [groups.google.com/g/spxy](https://groups.google.com/g/spxy)
-
-    You don't have to join each one of them. Just one or two where you
-    feel comfortable hanging out and share your updates, code examples,
-    post links, discussion posts, questions, and answers there.
+    programming challenge. Section [forums](#forums) has our forum
+    details. You don't have to join each one of them. Just one or two
+    where you feel comfortable hanging out. You are welcome to share
+    your updates, code examples, post links, discussion posts,
+    questions, and answers in these forums.
 
 In the next few units, we will see how to set up an interactive
 programming environment with Emacs and SLIME.
@@ -666,6 +662,16 @@ Here are the steps to install SLIME from its Git repository:
     ```
 
     The result `3` should appear in a minibuffer at the bottom.
+
+
+Forums
+------
+
+- Reddit: [r/spxy](https://www.reddit.com/r/spxy/)
+- Matrix: [#spxy:matrix.org](https://app.element.io/#/room/#spxy:matrix.org)
+- Freenode: [#spxy](https://webchat.freenode.net/#spxy)
+- Twitter: [@spxycc](https://twitter.com/spxycc)
+- Mailing list: [groups.google.com/g/spxy](https://groups.google.com/g/spxy)
 
 
 License
