@@ -28,8 +28,16 @@ Contents
 
 * [Week 1](#week-1)
   * [Unit 1: SBCL](#unit-1-sbcl)
+    * [Unit 1.1: Basics](#unit-11-basics)
+    * [Unit 1.2: Install SBCL](#unit-12-install-sbcl)
   * [Unit 2: Emacs](#unit-2-emacs)
-  * [Unit 3: SLIME](#unit-3-slime) (Coming up!)
+    * [Unit 2.1: Install Emacs](#unit-21-install-emacs)
+    * [Unit 2.2: Emacs Init File](#unit-22-emacs-init-file)
+    * [Unit 2.3: Emacs Help](#unit-23-emacs-help)
+  * [Unit 3: SLIME](#unit-3-slime)
+    * [Unit 3.1: Install SLIME Using MELPA](#unit-21-install-slime-using-melpa)
+    * [Unit 3.2: Install SLIME Using Git](#unit-21-install-slime-using-git)
+    * [Unit 3.3: Use SLIME](#use-slime)
 
 
 Week 1
@@ -42,8 +50,12 @@ Week 1
 > better programmer for the rest of your days, even if you never
 > actually use Lisp itself a lot." -- Eric S. Raymond
 
-This unit shows how to quickly setup SBCL on your system. First, a few
-basics:
+This unit shows how to quickly setup SBCL on your system.
+
+
+### Unit 1.1: Basics
+
+First, a couple of basics:
 
  1. Lisp is not a single programming language. It is a family of
     programming languages with a distinctive fully parenthesized prefix
@@ -62,8 +74,12 @@ In this document, we work with Common Lisp only. Take a look at
 https://common-lisp.net/implementations for a list of some of the
 popular ones. We choose SBCL for this unit because it is the most
 popular free and open source implementation of Common Lisp. It is also
-known for its good performance. Perform the following steps to get
-started with SBCL:
+known for its good performance.
+
+
+### Unit 1.2: Install SBCL
+
+Perform the following steps to get started with SBCL:
 
  1. Install SBCL.
 
@@ -110,7 +126,7 @@ started with SBCL:
     programming challenge. Here are our community forum details:
 
       - Reddit: [r/spxy](https://www.reddit.com/r/spxy/)
-      - Matrix: [#spxy:matrix.org](https://matrix.to/#/#spxy:matrix.org)
+      - Matrix: [#spxy:matrix.org](https://app.element.io/#/room/#spxy:matrix.org)
       - Freenode: [#spxy](https://webchat.freenode.net/#spxy)
       - Twitter: [@spxycc](https://twitter.com/spxycc)
       - Mailing list: [groups.google.com/g/spxy](https://groups.google.com/g/spxy)
@@ -133,6 +149,9 @@ complex Common Lisp projects with any editor or IDE that has good
 support for Common Lisp, Emacs and SLIME is perhaps the most popular
 development environment in the Lisp community. In this unit, we will
 see how to set up GNU Emacs.
+
+
+### Unit 2.1: Install Emacs
 
 This unit is useful for those who have little to no Emacs experience.
 If you are an experienced Emacs user, please proofread this unit and
@@ -272,6 +291,9 @@ can be quite helpful. The menu options contain frequently used
 operations. The option for each operation also displays the key-bindings
 that can be used to invoke the same operation.
 
+
+### Unit 2.2: Emacs Init File
+
 Let us now see how to customize Emacs with an initialization file.
 Perform the following steps:
 
@@ -338,10 +360,12 @@ Perform the following steps:
     `~/.emacs.d`, so this section recommends keeping your initialization
     program in `~/.emacs.d/init.el`.
 
-Before we end this unit, let us take a quick look on how to access the
-built-in help. Emacs has a rich built-in help and beginners as well as
-experienced users rely heavily on the built-in help. Here are some steps
-to get started with the help system:
+
+### Unit 2.3: Emacs Help
+
+Emacs has a rich built-in help and beginners as well as experienced
+users rely heavily on the built-in help. Here are some steps to get
+started with the help system:
 
  1. Enter the following command to get help on how to use the help
     features:
@@ -402,7 +426,201 @@ to get started with the help system:
 
 ## Unit 3: SLIME
 
-Coming up!
+SLIME stands for Superior Lisp Interaction Mode for Emacs. It is an
+Emacs mode that adds support for interacting with a running Common Lisp
+process for compilation, debugging, document lookup, etc. while
+developing Common Lisp applications.
+
+There are two popular ways to install SLIME. The easiest way is to
+install from MELPA. Another way is to install SLIME is from its Git
+repository. Both ways are presented below. If you are confused which way
+to choose, just install SLIME from MELPA and skip the section about
+installing from Git.
+
+
+### Unit 3.1: Install SLIME Using MELPA
+
+MELPA stands for Milkypostman's Emacs Lisp Package Archive. It is as a
+repository of Emacs packages. GNU Emacs version 24 and later uses Emacs
+Lisp Package Archive (ELPA) but not MELPA as the default repository for
+packages. Since, SLIME is available in MELPA but not in ELPA, we
+configure Emacs to use MELPA and then install SLIME from it.
+
+Perform the following steps to install SLIME from MELPA:
+
+ 1. Start Emacs with this command:
+
+    ```sh
+    emacs
+    ```
+
+ 2. Edit `~/.emacs.d/init.el` with this command:
+
+    ```
+    C-x C-f ~/.emacs.d/init.el RET
+    ```
+
+ 3. Add the following Emacs Lisp code to the initialization file:
+
+    ```elisp
+    (require 'package)
+    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+    (package-initialize)
+    (setq inferior-lisp-program "sbcl")
+    ```
+
+    The first three lines initializes Emacs to use Milkypostman's Emacs
+    Lisp Package Archive (MELPA) as a package repository. GNU Emacs
+    version 24 and later use Emacs Lisp Package Archive (ELPA) but not
+    MELPA as the default repository for packages. Since, SLIME is
+    available in MELPA but not in ELPA, we configure Emacs to use MELPA.
+
+    The last line pre-emptively sets the Lisp program to be used by
+    SLIME to SBCL.
+
+ 4. Save the Emacs initialization file:
+
+    ```
+    C-x C-s
+    ```
+
+ 5. Reload the Emacs initialization file:
+
+    ```
+    M-x load-file RET ~/.emacs.d/init.el RET
+    ```
+
+ 6. Download the list of packages available in ELPA and MELPA.
+
+    ```
+    M-x package-refresh-contents RET
+    ```
+
+ 7. Install SLIME:
+
+    ```
+    M-x package-install RET slime RET
+    ```
+
+ 8. Launch SLIME:
+
+    ```
+    M-x slime
+    ```
+
+    A new buffer named `*slime-repl sbcl*` should appear with the
+    following prompt:
+
+    ```
+    CL-USER>
+    ```
+
+    This is a Read-Eval-Print-Loop (REPL) where you can evaluate Common
+    Lisp expressions.
+
+
+### Unit 3.2: Install SLIME Using Git
+
+This is an alternate way to install SLIME. In this section, we see how
+to install SLIME from its Git repository. If you have already installed
+SLIME from MELPA using the steps in the previous section, you may skip
+this section entirely and go straight to the next section.
+
+Here are the steps to install SLIME from its Git repository:
+
+ 1. Clone the Git repository of SLIME. In the following command, we
+    clone it to the home directory but you may clone it to any directory
+    you are comfortable with:
+
+    ```sh
+    cd ~
+    git clone https://github.com/slime/slime.git
+    ```
+
+ 2. This is an optional step. Byte-compile SLIME with the following
+    command:
+
+    ```sh
+    cd slime
+    make compile contrib-compile
+    ```
+
+    This step is done only for improved performance. SLIME works fine
+    even if you skip this step. That's why this is an optional step.
+
+ 4. Start Emacs with this command:
+
+    ```sh
+    emacs
+    ```
+
+ 5. Add the following Emacs Lisp code to the initialization file:
+
+    ```elisp
+    (add-to-list 'load-path "~/slime")
+    (require 'slime-autoloads)
+    (setq inferior-lisp-program "sbcl")
+    ```
+
+    If you cloned to the Git repository of SLIME to a location other
+    than your home directory, update the first line of this Emacs Lisp
+    code accordingly.
+
+ 6. Save the Emacs initialization file:
+
+    ```
+    C-x C-s
+    ```
+
+ 7. Reload the Emacs initialization file:
+
+    ```
+    M-x load-file RET ~/.emacs.d/init.el RET
+    ```
+
+ 8. Launch SLIME:
+
+    ```
+    M-x slime
+    ```
+
+    A new buffer named `*slime-repl sbcl*` should appear with the
+    following prompt:
+
+    ```
+    CL-USER>
+    ```
+
+    This is a Read-Eval-Print-Loop (REPL) where you can evaluate Common
+    Lisp expressions.
+
+
+### Unit 3.3: Use SLIME
+
+ 1. Enter this in the REPL:
+
+    ```lisp
+    (+ 1 2)
+    ```
+
+    The following result should appear when you press <kbd>enter</kbd>:
+
+    ```
+    3
+    ```
+
+ 2. Try one more example in the REPL:
+
+    ```lisp
+    (format t "hello, world~%")
+    ```
+
+    The following result shoud appear on pressing <kbd>enter</kbd>:
+
+    ```
+    hello, world
+    NIL
+    ```
 
 
 License
