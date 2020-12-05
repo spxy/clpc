@@ -200,6 +200,15 @@ requests.
     C-x C-c
     ```
 
+Now you know how to start Emacs, create a file, save it, and quit.
+Improve your Emacs knowledge further by taking the Emacs tutorial that
+comes along with Emacs. First, start Emacs again and then enter the
+following command to start the tutorial:
+
+```
+C-h t
+```
+
 The key-bindings to perform various operations like creating file,
 saving file, quitting the editor, etc. may look arcane at first, but
 repeated usage of the key-bindings develops muscle memory soon and after
