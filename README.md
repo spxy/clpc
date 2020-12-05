@@ -77,7 +77,7 @@ known for its good performance.
     ```
 
  3. Congratulations! You have a working Common Lisp program now. Take a
-    moment and [share your success on Twitter](https://twitter.com/compose/tweet?text=I+just+began+my+%23CommonLispCodingChallenge+with+a+%22hello%2C+world%22+program%3A%0A%0A(format+t+%22hello%2C+world~%25%22)%0A%0AJoin+this+challenge+with+%40spxycc+and+me.+Let+us+spread+the+joy+of+learning+this+beautiful+programming+language.+See+https%3A%2F%2Fspxy.org%2Fcc%2Fclcc%2F+and+learn+how.)!
+    moment and [share your success on Twitter](https://twitter.com/compose/tweet?text=I+just+began+my+%23CommonLispProgrammingChallenge+with+a+%22hello%2C+world%22+program%3A%0A%0A(format+t+%22hello%2C+world~%25%22)%0A%0AJoin+this+challenge+with+%40spxycc+and+me.+Let+us+spread+the+joy+of+learning+this+beautiful+programming+language.+See+https%3A%2F%2Fspxy.org%2Fcc%2Fclcc%2F+and+learn+how.)!
 
  4. Open [Practical Common Lisp](http://www.gigamonkeys.com/book/)
     written by Peter Seibel and start working through the book. Get some
