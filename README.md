@@ -46,6 +46,20 @@ Contents
 Week 1
 ------
 
+In the first week, we set up all the tools we need to learn and program
+in Common Lisp productively. For someone who has not worked with these
+tools before, these may all seem like too many tools with too many new
+key-bindings to learn. Do not worry! The important key-bindings and a
+quick guide to get started with each tool are provided in the sections
+below. They will get you off the ground as quickly as possible.
+
+Mastering these tools is a life long endeavour though. Expert users of
+these tools use these tools daily and use them for months and years, so
+do not fret if they appear needlessly cumbersome in the beginning. Just
+keep using them, keep practising, and keep learning about them as you go
+further and further in this journey of learning Common Lisp programming.
+
+
 ## Unit 1: SBCL
 
 > "Lisp is worth learning for the profound enlightenment experience you
