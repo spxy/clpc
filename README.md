@@ -22,6 +22,13 @@ participate in this challenge too.
 The content of this repository is available under the [CC BY 4.0][CCBY]
 license.
 
+Note: Since this is the first iteration of this challenge, content for
+every new week will appear every two weeks. Thus, the first iteration
+will complete in roughly two months. That's because it is the holiday
+season, so we are taking it slow. From the second iteration onwards,
+when all content is already ready and may at most require minor
+tweaking, each iteration of this challenge will run for one month.
+
 
 Contents
 --------
@@ -39,6 +46,7 @@ Contents
     * [Unit 3.1: Install SLIME Using MELPA](#unit-31-install-slime-using-melpa)
     * [Unit 3.2: Install SLIME Using Git](#unit-31-install-slime-using-git)
     * [Unit 3.3: Use SLIME](#unit-33-use-slime)
+  * [Unit 4: Paredit](#unit-4-paredit) (Coming up!)
 * [Forums](#forums)
 * [License](#license)
 
@@ -448,6 +456,9 @@ Here is a list of frequently used commands you may need in Emacs:
   - `C-x C-s`: Save current buffer to file if modified.
   - `C-x C-c`: Quit Emacs.
   - `C-x C-b`: Show a list of exiting buffers.
+  - `C-a`: Go to beginning of line.
+  - `C-e`: Go to end of line.
+  - `C-/` or `C-_` or `C-x u`: Undo.
   - `C-x b BUFFER RET`: Switch to a different buffer.
   - `C-x o`: Select next window.
   - `C-x k`: Kill buffer.
@@ -456,7 +467,6 @@ Here is a list of frequently used commands you may need in Emacs:
   - `C-h a PATTERN RET`: Show commands that match pattern.
   - `C-h k KEY-SEQUENCE`: Show help for `KEY-SEQUENCE`.
   - `C-h o SYMBOL RET`: Show help for `SYMBOL`.
-  - `C-/` or `C-_` or `C-x u`: Undo.
 
 
 ## Unit 3: SLIME
@@ -680,6 +690,25 @@ Here are the steps to install SLIME from its Git repository:
     ```
 
     The result `3` should appear in a minibuffer at the bottom.
+
+
+Unit 4: Paredit
+---------------
+
+This is an optional section. Paredit helps in keeping parentheses
+balanced in Lisp code. It also helps in structured editing of
+S-expressions. This section is kept as optional because for someone new
+to Emacs, working with this tool further increases the learning curve.
+If you are learning Emacs, SLIME, Common Lisp, etc. for the first time,
+it may be good to skip this section and return to this section after you
+have gained sufficient comfort-level with Emacs, SLIME, and Common Lisp.
+
+To summarize, it is okay to skip this section if you are not up for it.
+Following Unit 1 (SBCL), Unit 2 (Emacs), and Unit 3 (SLIME) are
+sufficinet to skip straight ahead to Week 2 and begin your actual
+journey of programming in Common Lisp.
+
+[More content coming up!]
 
 
 Forums
