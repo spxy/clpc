@@ -53,11 +53,12 @@ key-bindings to learn. Do not worry! The important key-bindings and a
 quick guide to get started with each tool are provided in the sections
 below. They will get you off the ground as quickly as possible.
 
-Mastering these tools is a life long endeavour though. Expert users of
-these tools use these tools daily and use them for months and years, so
-do not fret if they appear needlessly cumbersome in the beginning. Just
-keep using them, keep practising, and keep learning about them as you go
-further and further in this journey of learning Common Lisp programming.
+Mastering these tools is a life-long endeavour though. Expert users of
+these tools use these tools daily for months and years before they
+become experts, so do not fret if they appear needlessly cumbersome in
+the beginning. Just keep using them, keep practising, and keep learning
+about them as you go further and further in this journey of learning
+Common Lisp programming.
 
 
 ## Unit 1: SBCL
@@ -82,16 +83,18 @@ First, a couple of basics:
  2. Common Lisp is a dialect of Lisp with an ANSI standard. There are
     many implementations of Common Lisp in the form of compilers as well
     as interpreters. Some examples are Steel Bank Common Lisp (SBCL),
-    Clozure CL (CCL), CLISP, etc. Clozure CL should not be confused with
-    Clojure. Clozure CL is a compiler implementation for Common Lisp
-    whereas Clojure is a separate dialect Lisp meant for the Java
-    platform.
+    Clozure CL (CCL), CLISP, etc. Take a look at
+    https://common-lisp.net/implementations for examples of more
+    implementations. Clozure CL should not be confused with Clojure.
+    Clozure CL is a compiler implementation for Common Lisp whereas
+    Clojure is a separate dialect Lisp meant for the Java platform.
 
-In this document, we work with Common Lisp only. Take a look at
-https://common-lisp.net/implementations for a list of some of the
-popular ones. We choose SBCL for this unit because it is the most
-popular free and open source implementation of Common Lisp. It is also
-known for its good performance.
+In this document, we work with Common Lisp only. We choose SBCL as the
+implementation we will work with. It is the most popular free and open
+source implementation of Common Lisp. It is also known for its good
+performance. Note that since Common Lisp is an ANSI standard, any Common
+Lisp implementation is okay for this challenge, however, the
+instructions provided below are specific to SBCL only.
 
 
 ### Unit 1.2: Install SBCL
@@ -157,16 +160,16 @@ programming environment with Emacs and SLIME.
 
 While it is perfectly possible to write Common Lisp programs and develop
 complex Common Lisp projects with any editor or IDE that has good
-support for Common Lisp, Emacs and SLIME is perhaps the most popular
-development environment in the Lisp community. In this unit, we will
-see how to set up GNU Emacs.
+support for Common Lisp, Emacs and SLIME are the most popular
+development environment in the Lisp community. In this unit, we will see
+how to set up GNU Emacs.
 
 
 ### Unit 2.1: Install Emacs
 
-This unit is useful for those who have little to no Emacs experience.
-If you are an experienced Emacs user, please proofread this unit and
-if you find any issues, [create issues][ISSUES] or send us pull
+This unit is useful for those who have little to no experience with
+Emacs. If you are an experienced Emacs user, please proofread this unit
+and if you find any issues, [create issues][ISSUES] or send us pull
 requests. Perform the following steps to get started with Emacs:
 
  1. See https://www.gnu.org/software/emacs/download.html for Emacs
@@ -214,9 +217,9 @@ requests. Perform the following steps to get started with Emacs:
     file into the buffer.
 
     Note that in the Emacs world (and elsewhere too), we use the
-    notation `C-` to denote we should press the <kbd>ctrl</kbd> and hold
-    it while pressing the next key. For example, what is often denoted
-    as <kbd>ctrl</kbd> + <kbd>x</kbd> is denoted as `C-x` here.
+    notation `C-` to denote that we should press the <kbd>ctrl</kbd> key
+    and hold it while pressing the next key. For example, what is often
+    denoted as <kbd>ctrl</kbd> + <kbd>x</kbd> is denoted as `C-x` here.
 
     Similarly, `RET` denotes the <kbd>enter</kbd>/<kbd>return</kbd> key.
 
@@ -315,10 +318,10 @@ Perform the following steps:
     ```
 
  2. In Emacs, enter this command to create a new file at
-    `~/emacs.d/init.el`:
+    `~/.emacs`:
 
     ```
-    C-x C-f ~/emacs.d/init.el RET
+    C-x C-f ~/.emacs RET
     ```
 
  3. Then add the following lines of Emacs Lisp code:
@@ -344,7 +347,7 @@ Perform the following steps:
     Emacs` message.
 
     As a beginner to Emacs, you might want to only load a theme in your
-    `~/emacs.d/init.el`. Don't disable the menu bar, tool bar, and
+    `~/.emacs`. Don't disable the menu bar, tool bar, and
     scroll bar if you are not comfortable yet. Similarly, the startup
     screen useful information for beginners, so you might want to gain
     more experience with Emacs before disabling it.
@@ -362,14 +365,15 @@ Perform the following steps:
     ```
 
     Emacs should now load with the theme and customization set in your
-    `~/emacs.d/init.el`.
+    `~/.emacs`.
 
     Emacs supports a number of initialization files such as `~/.emacs`,
     `~/.emacs.el`, `~/.emacs.d/init.el`, etc. Traditionally, Emacs users
-    kept their initialization program in `~/.emacs`. However, it may be
-    more convenient to have all your Emacs in one directory, i.e.,
-    `~/.emacs.d`, so this section recommends keeping your initialization
-    program in `~/.emacs.d/init.el`.
+    kept their initialization program in `~/.emacs`. We follow that
+    tradition here. However, it may be more convenient to have all your
+    Emacs in one directory, i.e., `~/.emacs.d`, so having the
+    initialization configuration in `~/.emacs.d/init.el` may be a good
+    idea too.
 
 
 ### Unit 2.3: Emacs Help
@@ -485,10 +489,10 @@ Perform the following steps to install SLIME from MELPA:
     emacs
     ```
 
- 2. Edit `~/.emacs.d/init.el` with this command:
+ 2. Edit `~/.emacs` with this command:
 
     ```
-    C-x C-f ~/.emacs.d/init.el RET
+    C-x C-f ~/.emacs RET
     ```
 
  3. Add the following Emacs Lisp code to the initialization file:
@@ -518,7 +522,7 @@ Perform the following steps to install SLIME from MELPA:
  5. Reload the Emacs initialization file:
 
     ```
-    M-x load-file RET ~/.emacs.d/init.el RET
+    M-x load-file RET ~/.emacs RET
     ```
 
  6. Download the list of packages available in ELPA and MELPA.
@@ -606,7 +610,7 @@ Here are the steps to install SLIME from its Git repository:
  7. Reload the Emacs initialization file:
 
     ```
-    M-x load-file RET ~/.emacs.d/init.el RET
+    M-x load-file RET ~/.emacs RET
     ```
 
  8. Launch SLIME:
