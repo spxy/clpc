@@ -42,10 +42,11 @@ Contents
     * [Unit 2.2: Emacs Init File](#unit-22-emacs-init-file)
     * [Unit 2.3: Emacs Help](#unit-23-emacs-help)
     * [Unit 2.4: More Emacs Commands](#unit-24-more-emacs-commands)
-  * [Unit 3: SLIME](#unit-3-slime)
-    * [Unit 3.1: Install SLIME Using MELPA](#unit-31-install-slime-using-melpa)
-    * [Unit 3.2: Install SLIME Using Git](#unit-31-install-slime-using-git)
-    * [Unit 3.3: Use SLIME](#unit-33-use-slime)
+  * [Unit 3: SLIME, Paredit, Rainbow Delimiters](#unit-3-slime-paredit-rainbow-delimiters)
+    * [Unit 3.1: Install Packages](#unit-31-install-packages)
+    * [Unit 3.2: Use SLIME](#unit-32-use-slime)
+    * [Unit 3.3: Use Paredit](#unit-33-use-paredit)
+    * [Unit 3.4: Use Rainbow Delimiters](#unit-34-use-rainbow-delimiters)
   * [Unit 4: Paredit](#unit-4-paredit) (Coming up!)
 * [Forums](#forums)
 * [License](#license)
@@ -97,9 +98,12 @@ First, a couple of basics:
     Clozure CL is a compiler implementation for Common Lisp whereas
     Clojure is a separate dialect Lisp meant for the Java platform.
 
-In this document, we work with Common Lisp only. We choose SBCL as the
-implementation we will work with. It is the most popular free and open
-source implementation of Common Lisp. It is also known for its good
+In this document, we work primarily with Common Lisp only. We will work
+a little bit with Emacs Lisp too in order to configure Emacs as a Common
+Lisp development environment but that will be very brief. We will spend
+most of our time with Common Lisp. We choose SBCL as the implementation
+we will work with. It is the most popular free and open source
+implementation of Common Lisp. It is also known for its good
 performance. Note that since Common Lisp is an ANSI standard, any Common
 Lisp implementation is okay for this challenge, however, the
 instructions provided below are specific to SBCL only.
@@ -335,30 +339,42 @@ Perform the following steps:
  3. Then add the following lines of Emacs Lisp code:
 
     ```elisp
-    (load-theme 'wombat)
     (menu-bar-mode -1)
     (tool-bar-mode -1)
     (scroll-bar-mode -1)
     (setq inhibit-startup-screen t)
+    (load-theme 'wombat)
     ```
 
-    The first line tells Emacs to load a beautiful dark color built-in
-    theme known as `wombat`. If you want to check the other built-in
-    themes, enter `M-x load-theme` and then press <kbd>tab</kbd> to see
-    the available built-in themes.
-
-    The next three lines remove the menu bar, tool bar, and the scroll
+    The first three lines remove the menu bar, tool bar, and the scroll
     bar from Emacs running in GUI mode. This makes the window look
     minimal.
 
-    The last line inhibits the startup screen with the `Welcome to GNU
+    The fourth line inhibits the startup screen with the `Welcome to GNU
     Emacs` message.
 
-    As a beginner to Emacs, you might want to only load a theme in your
-    `~/.emacs`. Don't disable the menu bar, tool bar, and
-    scroll bar if you are not comfortable yet. Similarly, the startup
-    screen useful information for beginners, so you might want to gain
-    more experience with Emacs before disabling it.
+    The fifth line tells Emacs to load a beautiful dark color built-in
+    theme known as `wombat`.
+
+    If you are a beginner to Emacs, you might not want to disable the
+    menu bar because it could be useful to access frequently used
+    functions. Similarly, the startup screen has useful information for
+    beginners, so you might want to gain more experience with Emacs
+    before disabling it.
+
+ 4. If you want to check the other built-in themes, enter:
+
+    ```
+    M-x customize-themes RET
+    ```
+
+    A new window with a buffer named `*Custom Themes*` appear. In this
+    buffer, select any theme you want to test. After you are done
+    testing, you can close this new window with:
+
+    ```
+    C-x 0
+    ```
 
  4. Quit Emacs now:
 
@@ -462,6 +478,7 @@ Here is a list of frequently used commands you may need in Emacs:
   - `C-x b BUFFER RET`: Switch to a different buffer.
   - `C-x o`: Select next window.
   - `C-x k`: Kill buffer.
+  - `C-x 0`: Kill window.
   - `C-x 4 0`: Kill buffer and window.
   - `C-h C-h`: Help for help.
   - `C-h a PATTERN RET`: Show commands that match pattern.
@@ -469,29 +486,35 @@ Here is a list of frequently used commands you may need in Emacs:
   - `C-h o SYMBOL RET`: Show help for `SYMBOL`.
 
 
-## Unit 3: SLIME
+## Unit 3: SLIME, Paredit, Rainbow Delimiters
 
-SLIME stands for Superior Lisp Interaction Mode for Emacs. It is an
-Emacs mode that adds support for interacting with a running Common Lisp
-process for compilation, debugging, document lookup, etc. while
-developing Common Lisp applications.
+In this section, we will install three Emacs packages to turn Emacs into
+an efficient development environment for Common Lisp:
 
-There are two popular ways to install SLIME. The easiest way is to
-install from MELPA. Another way is to install SLIME is from its Git
-repository. Both ways are presented below. If you are confused which way
-to choose, just install SLIME from MELPA and skip the section about
-installing from Git.
+  - Superior Lisp Interaction Mode for Emacs (SLIME): It is an Emacs
+    mode that adds support for interacting with a running Common Lisp
+    process for compilation, debugging, document lookup, etc. while
+    developing Common Lisp applications.
+
+  - Paredit: It helps in keeping parentheses balanced and in performing
+    structured editing of S-expressions.
+
+  - Rainbow Delimiters: It makes it easy to see matching parentheses by
+    coloring parentheses at different depth levels with different
+    colors.
+
+Out of these three packages, only SLIME is essential. It is necessary to
+install SLIME to get the full experience of Common Lisp programming with
+its interactive evaluation and debuging features.
+
+The other two packages, paredit and rainbow delimiters, are not so
+essential, but they can be helpful in keeping track of the nested
+parentheses.
+
+The next section shows how to install these packages and enable them.
 
 
-### Unit 3.1: Install SLIME Using MELPA
-
-MELPA stands for Milkypostman's Emacs Lisp Package Archive. It is as a
-repository of Emacs packages. GNU Emacs version 24 and later uses Emacs
-Lisp Package Archive (ELPA) but not MELPA as the default repository for
-packages. Since, SLIME is available in MELPA but not in ELPA, we
-configure Emacs to use MELPA and then install SLIME from it.
-
-Perform the following steps to install SLIME from MELPA:
+### Unit 3.1: Install Packages
 
  1. Start Emacs with this command:
 
@@ -508,20 +531,60 @@ Perform the following steps to install SLIME from MELPA:
  3. Add the following Emacs Lisp code to the initialization file:
 
     ```elisp
+    ; Enable installation of packages from MELPA.
     (require 'package)
     (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
     (package-initialize)
+    (unless package-archive-contents
+      (package-refresh-contents))
+
+    ; Write customizations in ~/.emacs.d/custom.el instead of here.
+    (setq custom-file (concat user-emacs-directory "custom.el"))
+    (when (file-exists-p custom-file)
+      (load custom-file))
+
+    ; Install packages.
+    (dolist (package '(slime paredit rainbow-delimiters))
+      (unless (package-installed-p package)
+        (package-install package)
+        (require package)))
+
+    ; Configure SLIME.
+    (add-to-list 'exec-path "/usr/local/bin")
     (setq inferior-lisp-program "sbcl")
+
+    ; Configure Paredit.
+    (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+    (add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit-mode)
+    (add-hook 'ielm-mode-hook 'enable-paredit-mode)
+    (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+    (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
+    (add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
+    (defun override-slime-del-key ()
+      (define-key slime-repl-mode-map
+        (read-kbd-macro paredit-backward-delete-key) nil))
+    (add-hook 'slime-repl-mode-hook 'override-slime-del-key)
+
+    ;Configure Rainbow Delimiters.
+    (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+    (add-hook 'eval-expression-minibuffer-setup-hook 'rainbow-delimiters-mode)
+    (add-hook 'ielm-mode-hook 'rainbow-delimiters-mode)
+    (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
+    (add-hook 'lisp-interaction-mode-hook 'rainbow-delimiters-mode)
+    (add-hook 'slime-repl-mode-hook 'rainbow-delimiters-mode)
     ```
 
-    The first three lines initializes Emacs to use Milkypostman's Emacs
-    Lisp Package Archive (MELPA) as a package repository. GNU Emacs
-    version 24 and later use Emacs Lisp Package Archive (ELPA) but not
-    MELPA as the default repository for packages. Since, SLIME is
-    available in MELPA but not in ELPA, we configure Emacs to use MELPA.
+    There is a lot going on here but hopefully most of the code is
+    self-explanatory. If you need a line-by-line explanation of what is
+    going on here, see [Appendix A](appendix-a.md).
 
-    The last line pre-emptively sets the Lisp program to be used by
-    SLIME to SBCL.
+    By the way, this is all the Emacs Lisp code we are going to write to
+    initialize Emacs. We are not going to work with Emacs Lisp anymore
+    beyond this. You might, of course, want to write more Emacs Lisp
+    code as you customize Emacs more and more to suit your needs as you
+    learn more Emacs in future. If you have been following the steps in
+    this document word-for-word until now, your Emacs initialization
+    file should look like this: [.emacs](.emacs).
 
  4. Save the Emacs initialization file:
 
@@ -529,11 +592,26 @@ Perform the following steps to install SLIME from MELPA:
     C-x C-s
     ```
 
- 5. Reload the Emacs initialization file:
+ 5. Quit Emacs:
 
     ```
-    M-x load-file RET ~/.emacs RET
+    C-x C-c
     ```
+
+ 6. Start Emacs again:
+
+    ```
+    emacs
+    ```
+
+    Emacs will take a while to start now because it will connect to
+    MELPA and fetch the three packages we have mentioned in `~/.emacs`.
+
+    After Emacs starts, check the content of `~/.emacs.d/elpa` directory
+    which should now contain subdirectories for the three packages.
+
+ 7. Quit Emacs and start it again to ensure that it starts quickly the
+    next time.
 
  6. Download the list of packages available in ELPA and MELPA.
 
@@ -541,13 +619,10 @@ Perform the following steps to install SLIME from MELPA:
     M-x package-refresh-contents RET
     ```
 
- 7. Install SLIME:
 
-    ```
-    M-x package-install RET slime RET
-    ```
+### Unit 3.2: Use SLIME
 
- 8. Launch SLIME:
+ 1. Launch SLIME:
 
     ```
     M-x slime
@@ -564,85 +639,7 @@ Perform the following steps to install SLIME from MELPA:
     Lisp expressions.
 
 
-### Unit 3.2: Install SLIME Using Git
-
-This is an alternate way to install SLIME. In this section, we see how
-to install SLIME from its Git repository. If you have already installed
-SLIME from MELPA using the steps in the previous section, you may skip
-this section entirely and go straight to the next section.
-
-Here are the steps to install SLIME from its Git repository:
-
- 1. Clone the Git repository of SLIME. In the following command, we
-    clone it to the home directory but you may clone it to any directory
-    you are comfortable with:
-
-    ```sh
-    cd ~
-    git clone https://github.com/slime/slime.git
-    ```
-
- 2. This is an optional step. Byte-compile SLIME with the following
-    command:
-
-    ```sh
-    cd slime
-    make compile contrib-compile
-    ```
-
-    This step is done only for improved performance. SLIME works fine
-    even if you skip this step. That's why this is an optional step.
-
- 4. Start Emacs with this command:
-
-    ```sh
-    emacs
-    ```
-
- 5. Add the following Emacs Lisp code to the initialization file:
-
-    ```elisp
-    (add-to-list 'load-path "~/slime")
-    (require 'slime-autoloads)
-    (setq inferior-lisp-program "sbcl")
-    ```
-
-    If you cloned to the Git repository of SLIME to a location other
-    than your home directory, update the first line of this Emacs Lisp
-    code accordingly.
-
- 6. Save the Emacs initialization file:
-
-    ```
-    C-x C-s
-    ```
-
- 7. Reload the Emacs initialization file:
-
-    ```
-    M-x load-file RET ~/.emacs RET
-    ```
-
- 8. Launch SLIME:
-
-    ```
-    M-x slime
-    ```
-
-    A new buffer named `*slime-repl sbcl*` should appear with the
-    following prompt:
-
-    ```
-    CL-USER>
-    ```
-
-    This is a Read-Eval-Print-Loop (REPL) where you can evaluate Common
-    Lisp expressions.
-
-
-### Unit 3.3: Use SLIME
-
- 1. Enter this in the REPL:
+ 2. Enter this in the REPL:
 
     ```lisp
     (+ 1 2)
@@ -654,7 +651,7 @@ Here are the steps to install SLIME from its Git repository:
     3
     ```
 
- 2. Try one more example in the REPL:
+ 3. Try one more example in the REPL:
 
     ```lisp
     (format t "hello, world~%")
@@ -667,7 +664,7 @@ Here are the steps to install SLIME from its Git repository:
     NIL
     ```
 
- 3. We will now see how to work on a Lisp source file and send
+ 4. We will now see how to work on a Lisp source file and send
     expressions to the REPL for evaluation using SLIME commands without
     having to leave Emacs. First, create a buffer for a new file, for
     example:
@@ -676,13 +673,13 @@ Here are the steps to install SLIME from its Git repository:
     C-x C-f foo.lisp
     ```
 
- 4. Now enter this Lisp code into the buffer for `foo.lisp`:
+ 5. Now enter this Lisp code into the buffer for `foo.lisp`:
 
     ```lisp
     (+ 1 2)
     ```
 
- 5. While the cursor is placed after the closing parenthesis (not on it,
+ 6. While the cursor is placed after the closing parenthesis (not on it,
     but after it), enter the following command:
 
     ```
@@ -692,33 +689,113 @@ Here are the steps to install SLIME from its Git repository:
     The result `3` should appear in a minibuffer at the bottom.
 
 
-Unit 4: Paredit
----------------
+### Unit 3.3: Use Paredit
 
-This is an optional section. Paredit helps in keeping parentheses
-balanced in Lisp code. It also helps in structured editing of
-S-expressions. This section is kept as optional because for someone new
-to Emacs, working with this tool further increases the learning curve.
-If you are learning Emacs, SLIME, Common Lisp, etc. for the first time,
-it may be good to skip this section and return to this section after you
-have gained sufficient comfort-level with Emacs, SLIME, and Common Lisp.
+ 1. Run Emacs:
 
-To summarize, it is okay to skip this section if you are not up for it.
-Following Unit 1 (SBCL), Unit 2 (Emacs), and Unit 3 (SLIME) are
-sufficinet to skip straight ahead to Week 2 and begin your actual
-journey of programming in Common Lisp.
+    ```sh
+    emacs
+    ```
 
-[More content coming up!]
+ 2. Open a Common Lisp source file:
+
+    ```
+    C-x C-f foo.lisp
+    ```
+
+ 3. Type the following code only:
+
+    ```lisp
+    (defun square (x
+    ```
+
+    At this point, Paredit should have inserted the two closing
+    parentheses automatically. The code should look like this:
+
+    ```lisp
+    (defun square (x))
+                    -
+    ```
+
+    The cursor should be situated just after the parameter `x`. The
+    underbar shows where the cursor should be.
+
+ 4. Type the closing parentheses now. Yes, type it even if the closing
+    parenthesis is already present. The cursor should now skip over the
+    first closing parenthesis like this:
+
+    ```lisp
+    (defun square (x))
+                     -
+    ```
+
+    Of course, there was no need to type the closing parenthesis because
+    it was already present but typing it out to skip over it is more
+    efficient than then moving over it with movement commands. This is,
+    in fact, a very nifty feature of Paredit. We can enter code with the
+    same keystrokes as we would without Paredit.
+
+ 5. Now press <code>enter</code> create a new line just before the last
+    parenthesis. A newline is inserted like this:
+
+    ```lisp
+    (defun square (x)
+      )
+      -
+    ```
+
+ 6. Now type only this:
+
+    ```lisp
+    (* x x
+    ```
+
+    Again, Paredit would have inserted the closing parenthesis
+    automatically. The code should look like this now:
+
+    ```lisp
+    (defun square (x)
+      (* x x))
+            -
+    ```
+
+To see the various different modes in which Paredit has been enabled in
+our Emacs initialization file, see [Appendix A](appendix-a.md).
+
+Note: More content is coming up in this section. Check back in a week!
+
+Note: Some portion of this section is based on [Lisp in Vim: Get Started
+with Paredit][lisp-in-vim] which provides a step by step walkthrough of
+how Paredit works in Vim. Since Vim's Paredit is based on Emacs'
+Paredit, both work similarly to some extent.
+
+[lisp-in-vim]: https://susam.in/blog/lisp-in-vim-with-slimv-or-vlime/#get-started-with-paredit
+
+
+### Unit 3.4: Rainbow Delimiters
+
+There is not much to learn about using Rainbow Delimiters. In the
+previous sections, you must have seen that as you type nested
+parentheses, each parenthesis is highlighted with a different color.
+That is done by Rainbow Delimiters. It colors each parenthesis according
+to its depth level. Rainbow Delimiters is a package that does what it
+needs to without you being required to learn anything.
 
 
 Forums
 ------
+
+The following community forums are available for asking questions, and
+talking to other members of our community:
 
 - Reddit: [r/spxy](https://www.reddit.com/r/spxy/)
 - Matrix: [#spxy:matrix.org](https://app.element.io/#/room/#spxy:matrix.org)
 - Freenode: [#spxy](https://webchat.freenode.net/#spxy)
 - Twitter: [@spxycc](https://twitter.com/spxycc)
 - Mailing list: [groups.google.com/g/spxy](https://groups.google.com/g/spxy)
+
+The Matrix and Freenode channels are bridged together, so if you join
+either of them, you can see messages of both channels.
 
 
 License
