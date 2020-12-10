@@ -531,22 +531,18 @@ The next section shows how to install these packages and enable them.
 
     ```elisp
     ; Enable installation of packages from MELPA.
-    (require 'package)
-    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
     (package-initialize)
+    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
     (unless package-archive-contents
       (package-refresh-contents))
 
-    ; Write customizations in ~/.emacs.d/custom.el instead of here.
+    ; Write customizations to ~/.emacs.d/custom.el instead of this file.
     (setq custom-file (concat user-emacs-directory "custom.el"))
-    (when (file-exists-p custom-file)
-      (load custom-file))
 
     ; Install packages.
     (dolist (package '(slime paredit rainbow-delimiters))
       (unless (package-installed-p package)
-        (package-install package)
-        (require package)))
+        (package-install package)))
 
     ; Configure SLIME.
     (add-to-list 'exec-path "/usr/local/bin")
@@ -564,9 +560,8 @@ The next section shows how to install these packages and enable them.
         (read-kbd-macro paredit-backward-delete-key) nil))
     (add-hook 'slime-repl-mode-hook 'override-slime-del-key)
 
-    ;Configure Rainbow Delimiters.
+    ; Configure Rainbow Delimiters.
     (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-    (add-hook 'eval-expression-minibuffer-setup-hook 'rainbow-delimiters-mode)
     (add-hook 'ielm-mode-hook 'rainbow-delimiters-mode)
     (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
     (add-hook 'lisp-interaction-mode-hook 'rainbow-delimiters-mode)
