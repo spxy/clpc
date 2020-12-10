@@ -8,7 +8,8 @@ begin learning Common Lisp.
 Note: This is an appendix to the main [README.md](README.md) of this
 project. To learn more about how to install Emacs, SBCL, Paredit, and
 Rainbow Delimiters as well as how to use them, see the
-[README.md](README.md).
+[README.md](README.md). To ask questions or recommend improvements to
+this guide, please join one of [our forums](README.md#forums).
 
 Each line of our minimal [.emacs](.emacs) file is explained below.
 
