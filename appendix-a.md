@@ -1,17 +1,26 @@
-Appendix A: Minimal Emacs Init File to Begin Learning Common Lisp
-=================================================================
+Appendix A: Emacs Init File to Begin Learning Common Lisp
+=========================================================
 
-This document explains the minimal [.emacs](.emacs) file provided by
-this repository. It is a minimal Emacs initialization file useful to
-begin learning Common Lisp.
+This document explains the [.emacs](.emacs) file we learnt to set up as
+part of [Common Lisp Programming Challenge][clpc]. It is a small Emacs
+initialization file useful to begin learning Common Lisp.
 
 Note: This is an appendix to the main [README.md](README.md) of this
 project. To learn more about how to install Emacs, SBCL, Paredit, and
 Rainbow Delimiters as well as how to use them, see the
 [README.md](README.md). To ask questions or recommend improvements to
-this guide, please join one of [our forums](README.md#forums).
+this guide, please join one of [our forums][forums].
 
-Each line of our minimal [.emacs](.emacs) file is explained below.
+[clpc]: https://github.com/spxy/clpc
+[forums]: https://github.com/spxy/clpc#forums
+
+Each line of our minimal [.emacs](.emacs) file is explained below. Note
+that the first 5 points are just tweaks to the Emacs user interface.
+They are not actually related to learning Common Lisp. However, many
+participants often ask how to customize the user interface to make it
+look minimal and add a good color theme, so this document will indulge a
+little bit in setting up the user interface. The actual package setup
+for Common Lisp environment begins with the 6th point.
 
   - Hide the menu bar:
 
@@ -31,18 +40,23 @@ Each line of our minimal [.emacs](.emacs) file is explained below.
     it out by inserting a semicolon (i.e., `;`) before the opening
     parentheses.
 
-
   - Hide the tool bar:
 
     ```elisp
     (tool-bar-mode -1)
     ```
 
+    Note that this is only an author's preference. You don't have to do
+    this if you would like to retain the tool bar.
+
   - Hide the scroll bar:
 
     ```elisp
     (scroll-bar-mode -1)
     ```
+
+    Note that this is only an author's preference. You don't have to do
+    this if you would like to retain the scroll bar.
 
   - Inhibit the startup screen with the `Welcome to GNU Emacs` message
     from appearing:
