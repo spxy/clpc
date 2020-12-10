@@ -1,8 +1,16 @@
-Appendix A: Emacs Initialization File
-=====================================
+Appendix A: Minimal Emacs Init File to Begin Learning Common Lisp
+=================================================================
 
-This document explains the reference [.emacs](.emacs) file provided by
-this repository. Each line of code is explained belowo
+This document explains the minimal [.emacs](.emacs) file provided by
+this repository. It is a minimal Emacs initialization file useful to
+begin learning Common Lisp.
+
+Note: This is an appendix to the main [README.md](README.md) of this
+project. To learn more about how to install Emacs, SBCL, Paredit, and
+Rainbow Delimiters as well as how to use them, see the
+[README.md](README.md).
+
+Each line of our minimal [.emacs](.emacs) file is explained below.
 
   - Hide the menu bar:
 
@@ -41,6 +49,12 @@ this repository. Each line of code is explained belowo
     ```elisp
     (setq inhibit-startup-screen t)
     ```
+
+    If you are a beginner to Emacs, you might find the startup screen
+    helpful, so you might not want this line in your Emacs
+    initialization file. In that case, remove this line or just comment
+    it out by inserting a semicolon (i.e., `;`) before the opening
+    parentheses.
 
   - Display line numbers in all buffers:
 
@@ -87,15 +101,15 @@ this repository. Each line of code is explained belowo
     ```
 
     The first line checks whether package descriptions from package
-    archives from archives have been matched. See
+    archives from archives have been fetched. See
     the `~/.emacs.d/elpa/archives` directory for archive contents in
     case you are curious. If the archive contents have not been fetched
     then the next line fetches them. Thus the second line executes only
     when the Emacs initialization is loaded for the first time.
 
   - When we install packages using `package-install` (coming up in the
-    next point), several customizations are written automatically into
-    the Emacs initialization file (`~/.emacs` in our case). This has the
+    next point), a few customizations are written automatically into the
+    Emacs initialization file (`~/.emacs` in our case). This has the
     rather undesirable effect of our carefully handcrafted `~/.emacs`
     being meddled by `package-install`. To be precise, it is the
     `custom` package invoked by `package-install` that intrudes into our
@@ -204,13 +218,13 @@ this repository. Each line of code is explained belowo
 
   - Enable Paredit while editing Common Lisp code:
 
-   ```elisp
-   (add-hook 'lisp-mode-hook 'enable-paredit-mode)
-   ```
+    ```elisp
+    (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+    ```
 
-   To test this, open a new Common Lisp source file, say, `foo.lisp`.
-   Then type `(`. Paredit should automatically insert the corresponding
-   `)`.
+    To test this, open a new Common Lisp source file, say, `foo.lisp`.
+    Then type `(`. Paredit should automatically insert the corresponding
+    `)`.
 
   - Enable Paredit in Lisp interaction mode:
 
@@ -266,7 +280,7 @@ this repository. Each line of code is explained belowo
     according to the depth level of each parenthesis.
 
     To test this open a new Emacs Lisp file, say, `foo.el`. Then type
-    `((((`. Rainbow Delimiters should will color each parenthesis
+    `((((`. Rainbow Delimiters should color each parenthesis
     differently.
 
   <!-- 
@@ -282,7 +296,7 @@ this repository. Each line of code is explained belowo
     ```
 
     To test this, enter `M-:` to bring up the eval-expression minbuffer
-    and type `((((`. `((((`. Rainbow Delimiters should will color each
+    and type `((((`. `((((`. Rainbow Delimiters should color each
     parenthesis differently.
   -->
 
@@ -294,18 +308,18 @@ this repository. Each line of code is explained belowo
     ```
 
     To test this, enter `M-x ielm RET`. When the `*ielm*` buffer comes
-    up, type `((((`. Rainbow Delimiters should will color each
-    parenthesis differently.
+    up, type `((((`. Rainbow Delimiters should color each parenthesis
+    differently.
 
   - Enable Rainbow Delimiters while editing Common Lisp code:
 
-   ```elisp
+    ```elisp
     (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
-   ```
+    ```
 
-   To test this, open a new Common Lisp source file, say, `foo.lisp`.
-   Then type `((((`. Rainbow Delimiters should color each parenthsis
-   differently.
+    To test this, open a new Common Lisp source file, say, `foo.lisp`.
+    Then type `((((`. Rainbow Delimiters should color each parenthsis
+    differently.
 
   - Enable Rainbow Delimiters in Lisp interaction mode:
 
