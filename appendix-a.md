@@ -71,12 +71,6 @@ for Common Lisp environment begins with the 6th point.
     it out by inserting a semicolon (i.e., `;`) before the opening
     parentheses.
 
-  - Display line numbers in all buffers:
-
-    ```elisp
-    (global-display-line-numbers-mode)
-    ```
-
   - Load a beautiful dark color theme known as `wombat`:
 
     ```elisp
