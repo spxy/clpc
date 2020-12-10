@@ -47,7 +47,6 @@ Contents
     * [Unit 3.2: Use SLIME](#unit-32-use-slime)
     * [Unit 3.3: Use Paredit](#unit-33-use-paredit)
     * [Unit 3.4: Use Rainbow Delimiters](#unit-34-use-rainbow-delimiters)
-  * [Unit 4: Paredit](#unit-4-paredit) (Coming up!)
 * [Forums](#forums)
 * [License](#license)
 
@@ -772,7 +771,7 @@ Paredit, both work similarly to some extent.
 [lisp-in-vim]: https://susam.in/blog/lisp-in-vim-with-slimv-or-vlime/#get-started-with-paredit
 
 
-### Unit 3.4: Rainbow Delimiters
+### Unit 3.4: Use Rainbow Delimiters
 
 There is not much to learn about using Rainbow Delimiters. In the
 previous sections, you must have seen that as you type nested
